@@ -1,31 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Surprise 🎉</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise 🎉</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow-x: hidden;
+        }
+
+        .page {
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 45px;
+            color: #e91e63;
+            animation: pop 1s ease;
+        }
+
+        .intro {
+            font-size: 20px;
+            color: #555;
+            animation: fade 2s ease;
+        }
+
+        .photos {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 35px 0;
+        }
+
+        .photos img {
+            width: 220px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            animation: photo 1.2s ease;
+        }
+
+        .message {
+            max-width: 650px;
+            margin: auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.9);
+            border-radius: 25px;
+            color: #e91e63;
+            font-size: 22px;
+            line-height: 1.6;
+            animation: up 1.5s ease;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 13px 25px;
+            background: #e91e63;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+
+        .heart {
+            position: fixed;
+            top: -30px;
+            font-size: 25px;
+            animation: fall 5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes pop {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+
+        @keyframes fade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes up {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes photo {
+            from {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        @keyframes fall {
+            from {
+                transform: translateY(-30px) rotate(0deg);
+            }
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <div class="surprise-page">
-    <h1>🎉 Surprise! 🎉</h1>
+<div class="page">
 
-    <p class="message">
-      Tumhari zindagi hamesha khushiyon se bhari rahe! 💖
+    <h1>🎉 Happy Birthday! 🎂</h1>
+
+    <p class="intro">
+        ✨ This surprise is especially for you! ✨
     </p>
 
-    <div class="photo-box">
-      <img src="photo.jpg" alt="Special Memory">
+    <div class="photos">
+        <img src="photo1.jpg" alt="Birthday Photo 1">
+        <img src="photo2.jpg" alt="Birthday Photo 2">
+        <img src="photo3.jpg" alt="Birthday Photo 3">
     </div>
 
-    <p class="wish">
-      ✨ Keep smiling and keep shining! ✨
-    </p>
+    <div class="message">
+        💖 Wishing you a day full of happiness, laughter
+        and beautiful memories! 💖
+        <br><br>
+        🎂 May all your dreams come true! 🎂
+        <br><br>
+        🥳 Keep smiling and keep shining! ✨
+    </div>
 
-    <div class="hearts">💖 💕 🎂 🎁 💕 💖</div>
-  </div>
+    <a class="back" href="index.html">
+        ← Back to Birthday Page
+    </a>
+
+</div>
+
+<script>
+    function createHeart() {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+
+        const emojis = ["💖", "💕", "✨", "🎈", "💗"];
+        heart.innerHTML =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration =
+            (3 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 400);
+</script>
 
 </body>
 </html>
